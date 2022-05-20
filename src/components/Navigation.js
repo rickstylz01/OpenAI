@@ -21,7 +21,10 @@ const Navigation = () => {
 
         <Navbar.Collapse>
           <Nav>
-            <Nav.Link href="#">Ricks Portfolio</Nav.Link>
+            <Nav.Link href="#">Ricks Portfolio 🏆</Nav.Link>
+            <Nav.Link href="Hungray"> Hungray 🍔 </Nav.Link>
+            <Nav.Link href="Quotes"> Quotes “✌” </Nav.Link>
+            <Nav.Link href="BreakNames"> BreakNames 🤸 </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
