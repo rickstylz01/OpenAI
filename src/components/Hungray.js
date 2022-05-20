@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useRef, useEffect } from "react";
 import {Button, Form} from "react-bootstrap";
 
-const SubmissionForm = () => {
+const Hungray = () => {
   const searchRef = useRef();
   const [state, setState] = useState();
 
@@ -49,5 +49,5 @@ const SubmissionForm = () => {
   );
 }
 
-export default SubmissionForm;
+export default Hungray;
 

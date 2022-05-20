@@ -1,16 +1,27 @@
 import {Container} from "react-bootstrap";
-import SubmissionForm from "./components/SubmissionForm";
+import Hungray from "./components/Hungray";
 import Navigation from "./components/Navigation";
-import {BrowserRouter as Routes, } from "react-router-dom";
+import Quotes from "./components/Quotes";
+import BreakNames from "./components/BreakNames";
+import Home from "./components/Home";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 
 function App() {
   return (
-    <div className="App">
-      <Navigation />
-      <Container>
-        <SubmissionForm />
-      </Container>
-    </div>
+    <Router>
+      <div className="App">
+        <Navigation />
+          <Container>
+            <Routes>
+              <Route path="/" exact element={<Home />} />
+              <Route path="/hungray" element={<Hungray />} />
+              <Route path="/quotes" element={<Quotes />} />
+              <Route path="/breaknames" element={<BreakNames />} />
+            </Routes>
+          </Container>
+      </div>
+    </Router>
   );
 }
 

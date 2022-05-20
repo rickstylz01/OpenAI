@@ -13,8 +13,10 @@ const Navigation = () => {
         collapseOnSelect
       >
         <Navbar.Brand href="/">
-          <img src={logo} alt="custom logo" width="50px" />
-          Hungray
+          <Nav.Link href="/">
+            <img src={logo} alt="custom logo" width="50px" />
+            Shopify-OpenAI
+          </Nav.Link>
         </Navbar.Brand>
 
         <Navbar.Toggle />
@@ -22,9 +24,9 @@ const Navigation = () => {
         <Navbar.Collapse>
           <Nav>
             <Nav.Link href="#">Ricks Portfolio 🏆</Nav.Link>
-            <Nav.Link href="Hungray"> Hungray 🍔 </Nav.Link>
-            <Nav.Link href="Quotes"> Quotes “✌” </Nav.Link>
-            <Nav.Link href="BreakNames"> BreakNames 🤸 </Nav.Link>
+            <Nav.Link href="hungray"> Hungray 🍔 </Nav.Link>
+            <Nav.Link href="quotes"> Quotes “✌” </Nav.Link>
+            <Nav.Link href="breaknames"> BreakNames 🤸 </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
