@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import { useRef, useEffect } from "react";
-import {Button, Form} from "react-bootstrap";
+import {Button, Card, Form} from "react-bootstrap";
 
 const Hungray = () => {
   const searchRef = useRef();
   const [state, setState] = useState({
-    heading: 'the Response from the AI will be shown here',
+    heading: 'The Response from the AI will be shown here',
     response: '..... await the response'
   });
 
@@ -18,11 +18,13 @@ const Hungray = () => {
 
     const formData = new FormData(e.target),
       formDataObj = Object.fromEntries(formData.entries())
-    console.log(formDataObj.foodItem);
+    console.log(formDataObj.foodDescription);
+
+    //////OPENAI
 
     setState({
-      heading: `AI Food Suggestions for: ${formDataObj.foodItem}`,
-      response: `The Response from OpenAI API will be shown here`
+      heading: `AI Food Suggestions for: ${formDataObj.foodDescription}`,
+      response: 'The Response from OpenAI API will be shown here'
     });
   }
 
@@ -36,11 +38,11 @@ const Hungray = () => {
           <Form.Control
             type="text"
             className="form-control"
-            name="foodItem"
+            name="foodDescription"
             aria-describedby="searchHelp"
             ref={searchRef}
             autoComplete="off"
-            placeholder="Key words"
+            placeholder="Enter Key Words"
           />
           <Form.Text className="text-muted">
             Enter as many key words as possible to determine what to eat 🤤.
@@ -48,9 +50,19 @@ const Hungray = () => {
         </Form.Group>
 
         <Button variant="primary" size="md" type="submit">
-          Submit
+          Get Food Suggestion
         </Button>
       </Form>
+
+      <Card>
+        <Card.Body>
+          <Card.Title><h1>{state.heading}</h1></Card.Title>
+          <hr />
+          <Card.Text>
+            <h4>{state.response}</h4>
+          </Card.Text>
+        </Card.Body>
+      </Card>
     </div>
   );
 }
