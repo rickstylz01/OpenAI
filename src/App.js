@@ -1,8 +1,8 @@
 import {Container} from "react-bootstrap";
 import Hungray from "./components/Hungray";
 import Navigation from "./components/Navigation";
-import Quotes from "./components/Quotes";
-import BreakNames from "./components/BreakNames";
+import CoverLetter from "./components/CoverLetter";
+import MotivationalCoach from "./components/MotivationalCoach";
 import Home from "./components/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -16,8 +16,8 @@ function App() {
             <Routes>
               <Route path="/" exact element={<Home />} />
               <Route path="/hungray" element={<Hungray />} />
-              <Route path="/quotes" element={<Quotes />} />
-              <Route path="/breaknames" element={<BreakNames />} />
+              <Route path="/cover-letter" element={<CoverLetter />} />
+              <Route path="/quotes" element={<MotivationalCoach />} />
             </Routes>
           </Container>
       </div>

@@ -4,7 +4,10 @@ import {Button, Form} from "react-bootstrap";
 
 const Hungray = () => {
   const searchRef = useRef();
-  const [state, setState] = useState();
+  const [state, setState] = useState({
+    heading: 'the Response from the AI will be shown here',
+    response: '..... await the response'
+  });
 
   useEffect(() => {
     searchRef.current.focus();
@@ -24,28 +27,31 @@ const Hungray = () => {
   }
 
   return(
-    <Form onSubmit={onFormSubmit}>
-      <Form.Group className="mb-3" controlId="formSearchQuery">
-        <Form.Label>What do you feel like eating?</Form.Label>
-        <Form.Control
-          type="text"
-          className="form-control"
-          name="foodItem"
-          aria-describedby="searchHelp"
-          ref={searchRef}
-          autoComplete="off"
-          placeholder="Key words"
-        />
-        <Form.Text className="text-muted">
-          Enter as many key words as possible to determine what to eat 🤤.
-        </Form.Text>
-      </Form.Group>
+    <div>
+      <h1>🍔 Hungray 🍔</h1>
+      <h4>Generate a Food Item That You Are Craving</h4>
+      <Form onSubmit={onFormSubmit}>
+        <Form.Group className="mb-3" controlId="formSearchQuery">
+          <Form.Label>What do you feel like eating?</Form.Label>
+          <Form.Control
+            type="text"
+            className="form-control"
+            name="foodItem"
+            aria-describedby="searchHelp"
+            ref={searchRef}
+            autoComplete="off"
+            placeholder="Key words"
+          />
+          <Form.Text className="text-muted">
+            Enter as many key words as possible to determine what to eat 🤤.
+          </Form.Text>
+        </Form.Group>
 
-      <Button variant="primary" size="md" type="submit">
-        Submit
-      </Button>
-    </Form>
-
+        <Button variant="primary" size="md" type="submit">
+          Submit
+        </Button>
+      </Form>
+    </div>
   );
 }
 
