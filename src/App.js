@@ -1,12 +1,14 @@
 import {Container} from "react-bootstrap";
 import SubmissionForm from "./components/SubmissionForm";
+import Navigation from "./components/Navigation";
 
 function App() {
   return (
     <div className="App">
-     <Container>
-       <SubmissionForm />
-     </Container>
+      <Navigation />
+      <Container>
+        <SubmissionForm />
+      </Container>
     </div>
   );
 }
