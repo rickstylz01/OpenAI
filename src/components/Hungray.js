@@ -1,17 +1,18 @@
 import React, {useState} from 'react';
 import { useRef, useEffect } from "react";
 import {Button, Card, Form} from "react-bootstrap";
+const { Configuration, OpenAIApi } = require("openai");
 
 const Hungray = () => {
   const searchRef = useRef();
+  useEffect(() => {
+    searchRef.current.focus();
+  }, []);
+
   const [state, setState] = useState({
     heading: 'The Response from the AI will be shown here',
     response: '..... await the response'
   });
-
-  useEffect(() => {
-    searchRef.current.focus();
-  }, []);
 
   const onFormSubmit = (e) => {
     e.preventDefault();
@@ -21,31 +22,60 @@ const Hungray = () => {
     console.log(formDataObj.foodDescription);
 
     //////OPENAI
-
-    setState({
-      heading: `AI Food Suggestions for: ${formDataObj.foodDescription}`,
-      response: 'The Response from OpenAI API will be shown here'
+    const configuration = new Configuration({
+      apiKey: process.env.REACT_APP_OPENAI_API_KEY,
     });
+    const openai = new OpenAIApi(configuration);
+
+    openai.createCompletion("text-curie-001", {
+      prompt: `Name delicious local food to try from the provided location: ${formDataObj.foodLocation}`,
+      temperature: 0.8,
+      max_tokens: 256,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
+    })
+    .then((response) => {
+      setState({
+        heading: `Local Food @ ${formDataObj.foodLocation}`,
+        response: `${response.data.choices[0].text}`
+      });
+      console.log('This is the state.response', state.response);
+    })
+  }
+
+  //function to split response
+  const listSplitResponse = (stringToSplit, separator) => {
+    console.log(stringToSplit.split(separator));
+
+    let splitString = stringToSplit.split(separator);
+
+    for (let i = 0; i < splitString.length; i++) {
+      splitString[i] = splitString[i] + <br />;
+    }
+
+    splitString = splitString.join("");
+    return splitString;
   }
 
   return(
     <div>
       <h1>🍔 Hungray 🍔</h1>
-      <h4>Generate a Food Item That You Are Craving</h4>
+      <h4>Find Amazing Local Food to Eat Wherever You Are!</h4>
       <Form onSubmit={onFormSubmit}>
         <Form.Group className="mb-3" controlId="formSearchQuery">
-          <Form.Label>What do you feel like eating?</Form.Label>
+          <Form.Label>Where are you currently located?</Form.Label>
           <Form.Control
             type="text"
             className="form-control"
-            name="foodDescription"
+            name="foodLocation"
             aria-describedby="searchHelp"
             ref={searchRef}
             autoComplete="off"
-            placeholder="Enter Key Words"
+            placeholder="Location"
           />
           <Form.Text className="text-muted">
-            Enter as many key words as possible to determine what to eat 🤤.
+            Enter city and state or country and region 🤤.
           </Form.Text>
         </Form.Group>
 
@@ -58,9 +88,13 @@ const Hungray = () => {
         <Card.Body>
           <Card.Title><h1>{state.heading}</h1></Card.Title>
           <hr />
-          <Card.Text>
-            <h4>{state.response}</h4>
-          </Card.Text>
+          <h4>
+            <Card.Text>
+              {/*list the responses*/}
+              {listSplitResponse(state.response, ',')}
+              {/*{state.response}*/}
+            </Card.Text>
+          </h4>
         </Card.Body>
       </Card>
     </div>

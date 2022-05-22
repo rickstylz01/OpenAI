@@ -13,10 +13,8 @@ const Navigation = () => {
         collapseOnSelect
       >
         <Navbar.Brand href="/">
-          <Nav.Link href="/">
-            <img src={logo} alt="custom logo" width="50px" />
-            Shopify-OpenAI
-          </Nav.Link>
+          <img src={logo} alt="custom logo" width="50px" />
+          Shopify-OpenAI
         </Navbar.Brand>
 
         <Navbar.Toggle />
