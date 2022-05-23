@@ -14,14 +14,17 @@ const Navigation = () => {
       >
         <Navbar.Brand href="/">
           <img src={logo} alt="custom logo" width="50px" />
-          Hungray
+          Shopify-OpenAI
         </Navbar.Brand>
 
         <Navbar.Toggle />
 
         <Navbar.Collapse>
           <Nav>
-            <Nav.Link href="#">Ricks Portfolio</Nav.Link>
+            <Nav.Link href="hungray"> Hungray </Nav.Link>
+            <Nav.Link href="cover-letter"> Cover Letter </Nav.Link>
+            <Nav.Link href="quotes"> Motivational Coach </Nav.Link>
+            <Nav.Link href="#">Ricks Portfolio </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
