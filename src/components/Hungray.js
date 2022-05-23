@@ -49,9 +49,9 @@ const Hungray = () => {
       if (splitStrings[i] === '\n\n') {
         splitStrings.splice(i, 1);
       }
-
       splitStrings[i] = splitStrings[i].replace('.', '');
     }
+
     return splitStrings;
   }
 
@@ -61,7 +61,7 @@ const Hungray = () => {
       <h4>Find Amazing Local Food to Eat Wherever You Are!</h4>
       <Form onSubmit={onFormSubmit}>
         <Form.Group className="mb-3" controlId="formSearchQuery">
-          <Form.Label>Where are you currently located?</Form.Label>
+          <Form.Label className="mt-4">Where are you currently located?</Form.Label>
           <Form.Control
             type="text"
             className="form-control"
@@ -81,7 +81,7 @@ const Hungray = () => {
         </Button>
       </Form>
 
-      <Card>
+      <Card className="mt-5">
         <Card.Body>
           <Card.Title><h1>{state.heading}</h1></Card.Title>
           <hr />
