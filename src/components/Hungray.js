@@ -11,7 +11,7 @@ const Hungray = () => {
 
   const [state, setState] = useState({
     heading: 'The Response from the AI will be shown here',
-    response: '..... await the response'
+    response: '...await the response'
   });
 
   const onFormSubmit = (e) => {
@@ -19,7 +19,6 @@ const Hungray = () => {
 
     const formData = new FormData(e.target),
       formDataObj = Object.fromEntries(formData.entries())
-    console.log(formDataObj.foodDescription);
 
     //////OPENAI
     const configuration = new Configuration({
@@ -28,8 +27,8 @@ const Hungray = () => {
     const openai = new OpenAIApi(configuration);
 
     openai.createCompletion("text-curie-001", {
-      prompt: `Name delicious local food to try from the provided location: ${formDataObj.foodLocation}`,
-      temperature: 0.8,
+      prompt: `Make a list of top, local restaurants to try from the provided location: ${formDataObj.foodLocation}`,
+      temperature: 0.6,
       max_tokens: 256,
       top_p: 1,
       frequency_penalty: 0,
@@ -37,25 +36,23 @@ const Hungray = () => {
     })
     .then((response) => {
       setState({
-        heading: `Local Food @ ${formDataObj.foodLocation}`,
+        heading: `Food to Try While In: ${formDataObj.foodLocation}`,
         response: `${response.data.choices[0].text}`
       });
-      console.log('This is the state.response', state.response);
     })
   }
 
-  //function to split response
-  const listSplitResponse = (stringToSplit, separator) => {
-    console.log(stringToSplit.split(separator));
+  const splitResponse = (stringToSplit, separator) => {
+    let splitStrings = stringToSplit.split(separator);
 
-    let splitString = stringToSplit.split(separator);
+    for (let i = 0; i < splitStrings.length; i++) {
+      if (splitStrings[i] === '\n\n') {
+        splitStrings.splice(i, 1);
+      }
 
-    for (let i = 0; i < splitString.length; i++) {
-      splitString[i] = splitString[i] + <br />;
+      splitStrings[i] = splitStrings[i].replace('.', '');
     }
-
-    splitString = splitString.join("");
-    return splitString;
+    return splitStrings;
   }
 
   return(
@@ -89,11 +86,13 @@ const Hungray = () => {
           <Card.Title><h1>{state.heading}</h1></Card.Title>
           <hr />
           <h4>
-            <Card.Text>
-              {/*list the responses*/}
-              {listSplitResponse(state.response, ',')}
-              {/*{state.response}*/}
-            </Card.Text>
+            <ul>
+              <Card.Text>
+                {splitResponse(state.response, /\d+/g).map((string, i) =>
+                  <li className="mt-3" key={i}>{string}</li>
+                )}
+              </Card.Text>
+            </ul>
           </h4>
         </Card.Body>
       </Card>
