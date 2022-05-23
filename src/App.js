@@ -1,5 +1,5 @@
 import {Container} from "react-bootstrap";
-import Hungray from "./components/Hungray";
+import Hungray from "./components/hungray/Hungray";
 import Navigation from "./components/Navigation";
 import CoverLetter from "./components/CoverLetter";
 import MotivationalCoach from "./components/MotivationalCoach";

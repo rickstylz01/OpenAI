@@ -1,7 +1,9 @@
+import './Hungray.css';
 import React, {useState} from 'react';
 import { useRef, useEffect } from "react";
 import {Button, Card, Form} from "react-bootstrap";
 const { Configuration, OpenAIApi } = require("openai");
+
 
 const Hungray = () => {
   const searchRef = useRef();
@@ -61,6 +63,7 @@ const Hungray = () => {
       <h4>Find Amazing Local Food to Eat Wherever You Are!</h4>
       <Form onSubmit={onFormSubmit}>
         <Form.Group className="mb-3" controlId="formSearchQuery">
+
           <Form.Label className="mt-4">Where are you currently located?</Form.Label>
           <Form.Control
             type="text"
@@ -72,12 +75,12 @@ const Hungray = () => {
             placeholder="Location"
           />
           <Form.Text className="text-muted">
-            Enter city and state or country and region 🤤.
+            Enter city and state or country and region.
           </Form.Text>
         </Form.Group>
 
         <Button variant="primary" size="md" type="submit">
-          Get Food Suggestion
+          Get Food Suggestions
         </Button>
       </Form>
 
