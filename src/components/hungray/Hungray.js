@@ -73,6 +73,7 @@ const Hungray = () => {
             ref={searchRef}
             autoComplete="off"
             placeholder="Location"
+            required
           />
           <Form.Text className="text-muted">
             Enter city and state or country and region.

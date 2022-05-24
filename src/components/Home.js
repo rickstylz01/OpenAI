@@ -5,10 +5,10 @@ import {Col, Row} from "react-bootstrap";
 const Home = () => {
   return (
     <div>
-      <h1> Online Artificial Intelligence AI (API) with OpenAI </h1>
-      <p> Choose any of the use-cases below to start generating AI content. </p>
+      <h1 className="mt-4"> Online Artificial Intelligence AI (API) with OpenAI </h1>
+      <p className="text-muted"> Choose any of the use-cases below to start generating AI content. </p>
 
-      <Row>
+      <Row className="mt-5">
         <Col>
           <AiDescriptionCard
             header="🍔 Hungray 🍔"
