@@ -45,23 +45,23 @@ const Hungray = () => {
   }
 
   const splitResponse = (stringToSplit, separator) => {
-    let splitStrings = stringToSplit.split(separator);
+    let newStringArray = stringToSplit.split(separator);
 
-    for (let i = 0; i < splitStrings.length; i++) {
-      if (splitStrings[i] === '\n\n') {
-        splitStrings.splice(i, 1);
+    for (let i = 0; i < newStringArray.length; i++) {
+      if (newStringArray[i] === '\n\n') {
+        newStringArray.splice(i, 1);
       }
-      splitStrings[i] = splitStrings[i].replace('.', '');
+      newStringArray[i] = newStringArray[i].replace('.', '');
     }
 
-    return splitStrings;
+    return newStringArray;
   }
 
   return(
     <div>
       <h1>🍔 Hungray 🍔</h1>
       <h4>Find Amazing Local Food to Eat Wherever You Are!</h4>
-      <Form onSubmit={onFormSubmit}>
+      <Form className="centrText" onSubmit={onFormSubmit}>
         <Form.Group className="mb-3" controlId="formSearchQuery">
 
           <Form.Label className="mt-4">Where are you currently located?</Form.Label>
